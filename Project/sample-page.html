@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+    <body>
+      <script id="pin-data" type="text/json">{{pins}}}</script>
+      <script type="text/javascript">
+        const rawData = document.getElementById('pin-data').textContent;
+        const pins = JSON.parse(rawPins);
+        for (let pin of pins) {
+          addPinToPage(pin.lat, pin.lng);
+        }
+      </script>
+  </body>
+</html>

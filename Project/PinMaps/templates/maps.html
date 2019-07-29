@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Full Screen Leaflet Map</title>
+   <meta charset="utf-8" />
+   <link
+       rel="stylesheet"
+       href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"
+   />
+   <link rel="stylesheet" href="styles/shared.css">
+   <link rel="stylesheet" type="text/css" href="/styles/maps.css">
+</head>
+<body>
+  <ul class="navigation">
+    <li><a href="/">Home</a></li>
+    <li><a href="/map">Map</a></li>
+    <li><a href="/entries">Entries</a></li>
+    <li><a href="/memories">Memories</a></li>
+    <li><a href="/aboutus">About Us</a></li>
+  </ul>
+  <!-- THE MAP CODE STARTS HERE -->
+   <div id="canvas"></div>
+   <script
+       src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js">
+   </script>
+   <script
+       src="/javascript/maps.js">
+   </script>
+   <script>
+   var happyPin = L.icon({
+       iconUrl: "https://image.flaticon.com/icons/svg/1559/1559161.svg",
+       shadowUrl: '',
+   //16, 1
+       iconSize:     [50, 50], // size of the icon
+       shadowSize:   [50, 64], // size of the shadow
+       iconAnchor:   [10, 40], // point of the icon which will correspond to marker's location
+       shadowAnchor: [4, 62],  // the same for the shadow
+       popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+   });
+
+   {% for pin in user_pins %}
+   addPin(L.latLng({{pin.latitude}}, {{pin.longitude}}), "{{pin.key.urlsafe()}}");
+   {% endfor %}
+   </script>
+   </div>
+</body>
+</html>

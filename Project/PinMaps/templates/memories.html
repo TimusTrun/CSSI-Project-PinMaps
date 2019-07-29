@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Memories</title>
+    <link rel="stylesheet" href="styles/shared.css">
+    <link rel="stylesheet" href="styles/memories.css">
+  </head>
+  <body>
+    <ul class="navigation">
+      <li><a href="/">Home</a></li>
+      <li><a href="/map">Map</a></li>
+      <li><a href="/entries">Entries</a></li>
+      <li><a href="/memories">Memories</a></li>
+      <li><a href="/aboutus">About Us</a></li>
+    </ul>
+    <h1>Welcome to your memories...</h1>
+    <li class="memories">
+    {% for entry in journal_display %}
+      <div class="memory">
+        <p class="location">{{entry.entry_location}} </p>
+        <p class="date">{{entry.entry_date}} </p>
+        <p class="entry">{{entry.entry_details}} </p>
+        <a class="link"href={{entry.entry_links}}>More pictures/info about the trip!</a>
+    </div>
+    {% endfor %}
+  </li>
+  </body>
+</html>
